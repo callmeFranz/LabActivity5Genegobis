@@ -14,6 +14,7 @@ public class LeapYearGUI extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 checkLeapYear();
+                clearInput();
             }
         });
     }
@@ -40,5 +41,8 @@ public class LeapYearGUI extends JFrame{
         }catch(NumberFormatException nfe) {
             JOptionPane.showMessageDialog(jpanel, "Invalid input");
         }
+    }
+    public void clearInput() {
+        tfYear.setText("");
     }
 }
