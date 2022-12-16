@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.List;
 
 public class SimpleCalcGUI extends JFrame {
     private JPanel jpanel;
@@ -27,7 +26,7 @@ public class SimpleCalcGUI extends JFrame {
         tfNumber1.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
-
+                return;
             }
 
             @Override
@@ -40,13 +39,13 @@ public class SimpleCalcGUI extends JFrame {
 
             @Override
             public void keyReleased(KeyEvent e) {
-
+                return;
             }
         });
         tfNumber2.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
-
+                return;
             }
 
             @Override
@@ -59,7 +58,7 @@ public class SimpleCalcGUI extends JFrame {
 
             @Override
             public void keyReleased(KeyEvent e) {
-
+                return;
             }
         });
     }
