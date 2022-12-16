@@ -37,10 +37,13 @@ public class FoodOrderGUI extends JFrame{
         discounts.add(rb5);
         discounts.add(rb10);
         discounts.add(rb15);
+        clearSelection();
         btnOrder.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 payment();
+                clearSelection();
             }
         });
     }
@@ -89,8 +92,16 @@ public class FoodOrderGUI extends JFrame{
                     break;
             }
             JOptionPane.showMessageDialog(jpanel, String.format("The total price is PHP %.2f", total));
+
         } catch(NoSelectionException nse) {
             JOptionPane.showMessageDialog(jpanel, nse.getMessage());
+
+        }
+    }
+    public void clearSelection() {
+        rbNone.setSelected(true);
+        for(JCheckBox cb : menu) {
+            cb.setSelected(false);
         }
     }
     public static class NoSelectionException extends Exception {
