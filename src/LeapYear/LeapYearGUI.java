@@ -3,6 +3,8 @@ package LeapYear;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 public class LeapYearGUI extends JFrame{
     private JPanel jpanel;
@@ -15,6 +17,25 @@ public class LeapYearGUI extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 checkLeapYear();
                 clearInput();
+            }
+        });
+        tfYear.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    checkLeapYear();
+                    clearInput();
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
             }
         });
     }
