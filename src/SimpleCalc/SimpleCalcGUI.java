@@ -3,6 +3,8 @@ package SimpleCalc;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.List;
 
 public class SimpleCalcGUI extends JFrame {
@@ -19,6 +21,45 @@ public class SimpleCalcGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 doOperation();
+                clearInputs();
+            }
+        });
+        tfNumber1.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    doOperation();
+                    clearInputs();
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+        });
+        tfNumber2.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    doOperation();
+                    clearInputs();
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
             }
         });
     }
@@ -28,6 +69,7 @@ public class SimpleCalcGUI extends JFrame {
         gui.setSize(650, 350);
         gui.setContentPane(gui.jpanel);
         gui.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        gui.setTitle("Simple Calculator");
     }
     public void doOperation() {
         try {
@@ -61,5 +103,9 @@ public class SimpleCalcGUI extends JFrame {
         } catch(ArithmeticException ae) {
             JOptionPane.showMessageDialog(jpanel, "Arithmetic error");
         }
+    }
+    public void clearInputs() {
+        tfNumber1.setText("");
+        tfNumber2.setText("");
     }
 }
