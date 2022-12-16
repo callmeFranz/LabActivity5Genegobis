@@ -30,30 +30,36 @@ public class SimpleCalcGUI extends JFrame {
         gui.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
     public void doOperation() {
-        float number1 = Float.parseFloat(tfNumber1.getText());
-        float number2 = Float.parseFloat(tfNumber2.getText());
-        float result = 0;
-        String[] ops = {"+", "-", "*", "/"};
-        switch(ops[cbOperations.getSelectedIndex()]) {
-            case "+":
-                result = number1 + number2;
-                int final_result = (int)result;
-                lblResult.setText(String.valueOf(final_result));
-                break;
-            case "-":
-                result = number1 - number2;
-                final_result = (int)result;
-                lblResult.setText(String.valueOf(final_result));
-                break;
-            case "*":
-                result = number1 * number2;
-                final_result = (int)result;
-                lblResult.setText(String.valueOf(final_result));
-                break;
-            case "/":
-                result = (number1 / number2);
-                lblResult.setText(String.valueOf(result));
-                break;
+        try {
+            float number1 = Float.parseFloat(tfNumber1.getText());
+            float number2 = Float.parseFloat(tfNumber2.getText());
+            float result = 0;
+            String[] ops = {"+", "-", "*", "/"};
+            switch (ops[cbOperations.getSelectedIndex()]) {
+                case "+":
+                    result = number1 + number2;
+                    int final_result = (int) result;
+                    lblResult.setText(String.valueOf(final_result));
+                    break;
+                case "-":
+                    result = number1 - number2;
+                    final_result = (int) result;
+                    lblResult.setText(String.valueOf(final_result));
+                    break;
+                case "*":
+                    result = number1 * number2;
+                    final_result = (int) result;
+                    lblResult.setText(String.valueOf(final_result));
+                    break;
+                case "/":
+                    result = (number1 / number2);
+                    lblResult.setText(String.valueOf(result));
+                    break;
+            }
+        } catch(NumberFormatException nfe) {
+            JOptionPane.showMessageDialog(jpanel,"Invalid input");
+        } catch(ArithmeticException ae) {
+            JOptionPane.showMessageDialog(jpanel, "Arithmetic error");
         }
     }
 }
