@@ -9,10 +9,10 @@ public class SimpleCalcGUI extends JFrame {
     private JPanel jpanel;
     private JTextField tfNumber1;
     private JButton computeResultButton;
+    private JComboBox cbOperations;
     private JTextField tfNumber2;
     private JTextField lblResult;
 
-    private JComboBox cbOperations;
     /* SimpleCalcGUI() {
         lblResult.setEditable(false);
         computeResultButton.addActionListener(new ActionListener() {
