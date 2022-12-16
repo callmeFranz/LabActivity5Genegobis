@@ -13,7 +13,7 @@ public class SimpleCalcGUI extends JFrame {
     private JTextField tfNumber2;
     private JTextField lblResult;
 
-    /* SimpleCalcGUI() {
+    SimpleCalcGUI() {
         lblResult.setEditable(false);
         computeResultButton.addActionListener(new ActionListener() {
             @Override
@@ -21,7 +21,7 @@ public class SimpleCalcGUI extends JFrame {
                 doOperation();
             }
         });
-    }*/
+    }
     public static void main(String[] args) {
         SimpleCalcGUI gui = new SimpleCalcGUI();
         gui.setVisible(true);
@@ -29,7 +29,7 @@ public class SimpleCalcGUI extends JFrame {
         gui.setContentPane(gui.jpanel);
         gui.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
-    /*public void doOperation() {
+    public void doOperation() {
         float number1 = Float.parseFloat(tfNumber1.getText());
         float number2 = Float.parseFloat(tfNumber2.getText());
         float result = 0;
@@ -55,5 +55,5 @@ public class SimpleCalcGUI extends JFrame {
                 lblResult.setText(String.valueOf(result));
                 break;
         }
-    } */
+    }
 }
