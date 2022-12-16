@@ -54,35 +54,48 @@ public class FoodOrderGUI extends JFrame{
         gui.setTitle("Food Ordering System");
     }
     public void payment() {
-        double total = 0;
-        int index = 0;
-        for(JCheckBox cb : menu) {
-            if(cb.isSelected()) {
-                total += (double) price_lists[index];
+        try {
+            double total = 0;
+            int index = 0;
+            boolean selected = false;
+            for (JCheckBox cb : menu) {
+                if (cb.isSelected()) {
+                    total +=  price_lists[index];
+                    selected = true;
+                }
+                index++;
             }
-            index++;
-        }
-
-        index = 0;
-        for(JRadioButton rb : discounts) {
-            if(rb.isSelected()) {
-                break;
+            if(!selected) {
+                throw new NoSelectionException("You haven't chosen any food yet");
             }
-            index++;
+            index = 0;
+            for (JRadioButton rb : discounts) {
+                if (rb.isSelected()) {
+                    break;
+                }
+                index++;
+            }
+            switch (index) {
+                case 0:
+                    break;
+                case 1:
+                    total = total - (0.05 * total);
+                    break;
+                case 2:
+                    total = total - (0.1 * total);
+                    break;
+                case 3:
+                    total = total - (0.15 * total);
+                    break;
+            }
+            JOptionPane.showMessageDialog(jpanel, String.format("The total price is PHP %.2f", total));
+        } catch(NoSelectionException nse) {
+            JOptionPane.showMessageDialog(jpanel, nse.getMessage());
         }
-        switch(index) {
-            case 0:
-                break;
-            case 1:
-                total = total - (0.05 * total) ;
-                break;
-            case 2:
-                total = total - (0.1 * total) ;
-                break;
-            case 3:
-                total = total - (0.15 * total) ;
-                break;
+    }
+    public static class NoSelectionException extends Exception {
+        NoSelectionException(String s) {
+            super(s);
         }
-        JOptionPane.showMessageDialog(jpanel, String.format("The total price is PHP %.2f", total));
     }
 }
